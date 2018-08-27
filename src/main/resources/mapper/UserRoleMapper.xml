@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.alibaba.guapi.mapper.UserRoleMapper">
+
+    <resultMap id="UserRoleResultMap" type="UserRole">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <association property="role" column="role_id" javaType="Role">
+            <id property="id" column="rid"/>
+            <result property="roleName" column="role_name"/>
+            <result property="description" column="description"/>
+            <result property="createDate" column="create_date" javaType="java.sql.Date" jdbcType="DATE"/>
+        </association>
+    </resultMap>
+
+    <select id="findById" parameterType="int" resultMap="UserRoleResultMap">
+        SELECT `id`, user_id, role_id
+        FROM `user_role`
+        WHERE `id` = #{id};
+    </select>
+
+    <select id="findByUserId" parameterType="int" resultMap="UserRoleResultMap">
+        SELECT u.`id`, u.user_id, r.id AS rid, r.role_name, r.description, r.create_date
+        FROM user_role u LEFT JOIN role r ON u.role_id = r.id
+        WHERE user_id = #{userId}
+    </select>
+
+    <insert id="save" parameterType="UserRole">
+        INSERT INTO `user_role`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                `user_id`,
+            </if>
+            <if test="role.id != null">
+                `role_id`,
+            </if>
+        </trim>
+        <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                #{userId},
+            </if>
+            <if test="role.id != null">
+                #{role.id},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="deleteById" parameterType="int">
+        DELETE
+        FROM user_role
+        WHERE id = #{id}
+    </delete>
+
+    <update id="update" parameterType="UserRole">
+        UPDATE user_role
+        <set>
+            <if test="userId != null">
+                user_id = #{userId}
+            </if>
+        </set>
+        <set>
+            <if test="roleId != null">
+                role_id = #{roleId}
+            </if>
+        </set>
+        WHERE `id` = #{id}
+    </update>
+
+</mapper>
