@@ -1,10 +1,12 @@
 package com.alibaba.guapi.common.enums;
 
+import lombok.Getter;
+
 /**
  * @author XinAnzzZ
  * @date 2018/8/14 15:11
  */
-@SuppressWarnings("unused")
+@Getter
 public enum ResponseEnum {
 
     /*** 账号不存在 */
@@ -28,22 +30,6 @@ public enum ResponseEnum {
 
     ResponseEnum(int code, String msg) {
         this.code = code;
-        this.msg = msg;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
         this.msg = msg;
     }
 }
