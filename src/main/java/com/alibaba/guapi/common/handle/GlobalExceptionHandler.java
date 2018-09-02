@@ -48,7 +48,7 @@ public class GlobalExceptionHandler {
         return modelAndView;
     }
 
-    @ExceptionHandler(RuntimeException.class)
+    @ExceptionHandler(Exception.class)
     @ResponseBody
     public ResponseJson handleRuntimeException(UnauthorizedException e) {
         log.info("未知异常：" + e);

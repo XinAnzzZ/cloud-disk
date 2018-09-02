@@ -1,10 +1,12 @@
 package com.alibaba.guapi.common.enums;
 
+import lombok.Getter;
+
 /**
  * @author XinAnzzZ
  * @date 2018/8/22 16:14
  */
-@SuppressWarnings("unused")
+@Getter
 public enum RoleEnum {
 
     /*** 管理员 */
@@ -26,15 +28,7 @@ public enum RoleEnum {
         return code;
     }
 
-    public void setCode(int code) {
-        this.code = code;
-    }
-
     public String getMsg() {
         return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
     }
 }

@@ -11,10 +11,13 @@ public enum ResponseEnum {
     UNKNOWN_ACCOUNT(401, "账号不存在！"),
 
     /*** 密码错误 */
-    INCORRECT_CREDENTIAL(402, "账号或密码错误！"),
+    INCORRECT_CREDENTIAL(402, "密码错误！"),
 
     /*** 没有访问权限 */
     UNAUTHORIZED(403, "没有访问权限！"),
+
+    /*** 登陆失败 */
+    LOGIN_FAILURE(406, "登陆失败！"),
 
     /*** 未知错误 */
     UNKNOWN_ERROR(500, "未知错误!");

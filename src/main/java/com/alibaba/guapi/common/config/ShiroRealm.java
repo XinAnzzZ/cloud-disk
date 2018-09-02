@@ -30,6 +30,11 @@ public class ShiroRealm extends AuthorizingRealm {
     @Autowired
     private UserRoleMapper userRoleMapper;
 
+    /**
+     * 获取认证信息
+     *
+     * @param authenticationToken token  就是登陆时候带过来的认证信息，如果认证通过，这些信息会被shiro缓存
+     */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(
             AuthenticationToken authenticationToken) throws AuthenticationException {
@@ -48,6 +53,12 @@ public class ShiroRealm extends AuthorizingRealm {
         return new SimpleAuthenticationInfo(principal, credentials, credentialsSalt, realmName);
     }
 
+    /**
+     * 授权
+     *
+     * @param principalCollection 认证之后存在shiro中的用户信息
+     * @return 授权信息
+     */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         // 从principalCollection中获取登录信息，得到认证实体

@@ -23,8 +23,14 @@
     </select>
 
     <select id="findByUserId" parameterType="int" resultMap="UserRoleResultMap">
-        SELECT u.`id`, u.user_id, r.id AS rid, r.role_name, r.description, r.create_date
-        FROM user_role u LEFT JOIN role r ON u.role_id = r.id
+        SELECT u.`id`,
+               u.user_id,
+               r.id AS rid,
+               r.role_name,
+               r.description,
+               r.create_date
+        FROM user_role u
+                 LEFT JOIN role r ON u.role_id = r.id
         WHERE user_id = #{userId}
     </select>
 

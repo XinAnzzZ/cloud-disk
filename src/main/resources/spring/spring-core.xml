@@ -22,6 +22,7 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
+    <!-- 事物的注解扫描 -->
     <tx:annotation-driven/>
 
 </beans>
