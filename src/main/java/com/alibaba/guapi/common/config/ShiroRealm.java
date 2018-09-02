@@ -45,7 +45,7 @@ public class ShiroRealm extends AuthorizingRealm {
         }
         // 认证的实体信息，可以使用用户名，也可以使用实体对象
         Object principal = user;
-        // 认证的证书，也就是认证的密码
+        // 认证的证书，也就是认证的密码，ok
         Object credentials = user.getPassword();
         // 盐，使用用户名做盐
         ByteSource credentialsSalt = ByteSource.Util.bytes(user.getUsername());
