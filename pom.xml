@@ -197,7 +197,7 @@
             <version>1.3.2</version>
         </dependency>
         <!-- shiro end -->
-        
+
         <!-- ehcache start -->
         <dependency>
             <groupId>net.sf.ehcache</groupId>
@@ -224,6 +224,14 @@
             <version>3.0.1</version>
         </dependency>
         <!-- sitemesh end -->
+
+        <!-- mail start -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.7</version>
+        </dependency>
+        <!-- mail end -->
 
     </dependencies>
 
