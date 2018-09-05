@@ -8,6 +8,7 @@ import lombok.Data;
  * @date 2018/8/13 11:15
  */
 @Data
+@SuppressWarnings("unused")
 public class ResponseJson<T> {
     private int code;
 
@@ -15,12 +16,12 @@ public class ResponseJson<T> {
 
     private T data;
 
-    public ResponseJson() {
+    private ResponseJson() {
         this.code = 200;
         this.msg = "success";
     }
 
-    public ResponseJson(T data) {
+    private ResponseJson(T data) {
         this.code = 200;
         this.msg = "success";
         this.data = data;
