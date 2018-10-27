@@ -51,6 +51,7 @@
                     success: function (response) {
                         if (response.code === 200) {
                             _this.$message({type: 'success', message: response['msg']});
+                            window.location.href = "/index";
                         } else {
                             // response['msg'] = response.msg
                             _this.$message.error(response['msg']);

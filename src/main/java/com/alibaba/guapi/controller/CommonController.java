@@ -1,5 +1,6 @@
 package com.alibaba.guapi.controller;
 
+import com.alibaba.guapi.common.consts.RoleConst;
 import com.alibaba.guapi.common.enums.ResponseEnum;
 import com.alibaba.guapi.common.util.ResponseJson;
 import com.alibaba.guapi.entity.User;
@@ -9,6 +10,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -64,7 +66,7 @@ public class CommonController {
         } catch (UnknownAccountException e) {
             return ResponseJson.fail(ResponseEnum.UNKNOWN_ACCOUNT);
         } catch (IncorrectCredentialsException e2) {
-            return ResponseJson.fail(ResponseEnum.INCORRECT_CREDENTIAL);
+            return ResponseJson.fail(ResponseEnum.INCORRECT_CREDENTIALS);
         } catch (Exception e3) {
             return ResponseJson.fail(ResponseEnum.LOGIN_FAILURE);
         }
@@ -87,5 +89,11 @@ public class CommonController {
     public ResponseJson register(@RequestBody User user) {
         // 表单校验
         return userService.register(user);
+    }
+
+    @RequiresRoles({RoleConst.ADMIN, RoleConst.USER})
+    @GetMapping("/test")
+    public String test() {
+        return "/user/test";
     }
 }

@@ -13,7 +13,7 @@ public enum ResponseEnum {
     UNKNOWN_ACCOUNT(401, "账号不存在！"),
 
     /*** 密码错误 */
-    INCORRECT_CREDENTIAL(402, "密码错误！"),
+    INCORRECT_CREDENTIALS(402, "密码错误！"),
 
     /*** 没有访问权限 */
     UNAUTHORIZED(403, "没有访问权限！"),

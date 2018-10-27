@@ -35,12 +35,14 @@
         <property name="unauthorizedUrl" value="/common/unauthorized"/>
         <property name="filterChainDefinitions">
             <value>
+                <!-- anon = 任何人访问 -->
                 /favicon.ico = anon
                 /static/** = anon
                 /druid/** = anon
                 /register = anon
                 /login = anon
                 /logout = logout
+                <!-- authc = 需要认证（登陆） -->
                 /** = authc
             </value>
         </property>

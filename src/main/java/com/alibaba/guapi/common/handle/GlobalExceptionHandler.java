@@ -37,7 +37,7 @@ public class GlobalExceptionHandler {
             // 说明是异步请求，返回json数据
             modelAndView = new ModelAndView();
             MappingJackson2JsonView view = new MappingJackson2JsonView();
-            Map<String, Object> attributes = new HashMap<>(2);
+            Map<String, Object> attributes = new HashMap<>(8);
             attributes.put("code", ResponseEnum.UNAUTHORIZED.getCode());
             attributes.put("msg", ResponseEnum.UNAUTHORIZED.getMsg());
             view.setAttributesMap(attributes);
